@@ -1,5 +1,7 @@
 __pycache__/
 *.pyc
 .env
-*.log# created by virtualenv automatically
-.venv/Lib
+*.log
+.idea/
+venv/
+.venv/
