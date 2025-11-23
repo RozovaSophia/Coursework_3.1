@@ -1,24 +1,19 @@
 import requests
-import psycopg2
-from config import config
+from typing import List, Dict, Optional
 
 
 class HHAPI:
-    """Класс для работы с API hh.ru"""
-
     def __init__(self):
         self.base_url = "https://api.hh.ru/"
 
-    def get_employer(self, employer_id):
-        """Получить информацию о работодателе"""
+    def get_employer(self, employer_id: str) -> Optional[Dict]:
         url = f"{self.base_url}employers/{employer_id}"
         response = requests.get(url)
         if response.status_code == 200:
             return response.json()
         return None
 
-    def get_vacancies(self, employer_id):
-        """Получить вакансии работодателя"""
+    def get_vacancies(self, employer_id: str) -> List[Dict]:
         url = f"{self.base_url}vacancies"
         params = {
             'employer_id': employer_id,
